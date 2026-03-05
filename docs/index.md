@@ -1,4 +1,6 @@
-# Rebarkit — Installer Releases
+---
+title: Rebarkit Installer Releases
+---
 This repository contains public installer releases for the Rebarkit Revit add-in.
 
 ## License / Terms
