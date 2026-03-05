@@ -1,0 +1,68 @@
+REBARTOOLS FREE PREVIEW LICENSE AGREEMENT (EULA)
+
+Last updated: 2026-03-05
+
+IMPORTANT: PLEASE READ CAREFULLY. BY INSTALLING, COPYING, ACCESSING, OR USING THE SOFTWARE, YOU AGREE TO BE BOUND BY THIS AGREEMENT.
+
+1. Definitions
+1.1 "Software" means the RebarTools software, including any installers, add-ins, binaries, sample files, documentation, updates, and accompanying materials made available by the Licensor.
+1.2 "Licensor" means Gábor Schnierer (GitHub: @gaborschnierer).
+1.3 "You" means the individual or legal entity using the Software.
+
+2. License Grant (Free Preview)
+2.1 Subject to this Agreement, the Licensor grants You a personal, limited, non-exclusive, non-transferable, non-sublicensable, revocable license to install and use the Software for evaluation and productive use at no charge ("Free Preview").
+2.2 The Free Preview is not time-limited, but it may be modified, restricted, or revoked by the Licensor at any time in accordance with Section 8 (Termination). Future versions may require payment, a subscription, a license key, or other commercial terms.
+
+3. Permitted Use
+3.1 You may:
+  (a) install and use the Software on computers you own or control;
+  (b) use the Software in connection with Autodesk Revit (or compatible Autodesk products) as intended by the Software.
+
+4. Restrictions
+4.1 You must not, and must not permit others to:
+  (a) reverse engineer, decompile, or disassemble the Software, except to the extent such restriction is prohibited by applicable law;
+  (b) modify, translate, adapt, or create derivative works of the Software;
+  (c) redistribute, sell, rent, lease, lend, sublicense, or otherwise transfer the Software or any portion of it to any third party (including hosting the installer on another website), except with the Licensor’s prior written permission;
+  (d) remove, alter, or obscure any proprietary notices, trademarks, or copyright notices;
+  (e) use the Software to develop, train, or improve competing software products or services;
+  (f) bypass, disable, or interfere with any license enforcement, security, or technical protection measures (if any).
+
+5. Updates and Changes
+5.1 The Licensor may provide updates, patches, or new versions. Any such updates are part of the Software and are subject to this Agreement unless accompanied by a different license agreement.
+5.2 The Licensor may change features, availability, or compatibility at any time. The Licensor does not guarantee backward compatibility.
+
+6. Ownership
+6.1 The Software is licensed, not sold. The Licensor and/or the Licensor’s licensors retain all right, title, and interest in and to the Software, including all intellectual property rights.
+
+7. Privacy and Telemetry
+7.1 The Software may collect limited technical information (for example, version, crash reports, or usage diagnostics) to improve product quality. If the Software includes telemetry, details will be described in accompanying documentation or a privacy notice.
+7.2 You are responsible for ensuring your use complies with applicable workplace policies and laws.
+
+8. Termination
+8.1 This Agreement is effective until terminated.
+8.2 The Licensor may terminate this Agreement (including the Free Preview license) at any time, with or without notice, for any reason, including if the Licensor decides to discontinue the Free Preview or the Software.
+8.3 This Agreement terminates automatically if You breach any term.
+8.4 Upon termination, You must stop using the Software and uninstall/delete all copies in your possession or control.
+
+9. Disclaimer of Warranty
+9.1 THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE". TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE LICENSOR DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+9.2 THE LICENSOR DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE, UNINTERRUPTED, OR COMPATIBLE WITH ANY PARTICULAR VERSION OF AUTODESK REVIT OR ANY OTHER SOFTWARE OR HARDWARE.
+
+10. Limitation of Liability
+10.1 TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL THE LICENSOR BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE, DATA, BUSINESS INTERRUPTION, OR GOODWILL, ARISING OUT OF OR RELATED TO THE SOFTWARE OR THIS AGREEMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+10.2 TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE LICENSOR’S TOTAL LIABILITY FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THE SOFTWARE OR THIS AGREEMENT WILL NOT EXCEED THE AMOUNT YOU PAID FOR THE SOFTWARE IN THE TWELVE (12) MONTHS BEFORE THE EVENT GIVING RISE TO THE CLAIM. BECAUSE THE SOFTWARE IS PROVIDED FREE OF CHARGE DURING THE FREE PREVIEW, THIS AMOUNT WILL BE ZERO (0) IN MOST CASES.
+
+11. Export and Compliance
+11.1 You must comply with all applicable laws and regulations, including export control and sanctions laws, to the extent applicable.
+
+12. Third-Party Software and Trademarks
+12.1 The Software may include or depend on third-party components governed by separate notices or terms. Such third-party terms, if any, will be provided alongside the Software.
+12.2 Autodesk and Revit are trademarks of Autodesk, Inc. The Licensor is not affiliated with or endorsed by Autodesk.
+
+13. Governing Law
+13.1 This Agreement will be governed by the laws of the Licensor’s place of residence, excluding conflict of laws principles, unless applicable law requires otherwise.
+
+14. Contact
+14.1 For questions about this Agreement, contact the Licensor via GitHub: https://github.com/gaborschnierer
+
+END OF AGREEMENT
