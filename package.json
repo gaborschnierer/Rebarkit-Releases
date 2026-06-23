@@ -1,0 +1,9 @@
+{
+  "name": "rebarkit-releases-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Minimal static site generator for Rebarkit MSI releases",
+  "scripts": {
+    "generate-site": "node scripts/generate-site.js"
+  }
+}
