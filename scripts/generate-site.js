@@ -13,7 +13,7 @@ function escapeHtml(value) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/\"/g, '&quot;')
+    .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
 
@@ -35,9 +35,17 @@ function conciseNotes(body) {
   return `${oneLine.slice(0, 237)}...`;
 }
 
+function validateRepoIdentifier(value, label) {
+  if (!/^[A-Za-z0-9_.-]+$/.test(value)) {
+    throw new Error(`Invalid ${label} value: ${value}`);
+  }
+}
+
 async function fetchReleases(owner, repo) {
   const token = process.env.GITHUB_TOKEN;
-  const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases?per_page=50`, {
+  const apiOwner = encodeURIComponent(owner);
+  const apiRepo = encodeURIComponent(repo);
+  const response = await fetch(`https://api.github.com/repos/${apiOwner}/${apiRepo}/releases?per_page=50`, {
     headers: {
       Accept: 'application/vnd.github+json',
       'User-Agent': 'rebarkit-release-site-generator',
@@ -66,16 +74,18 @@ async function loadReleases(owner, repo) {
 
 function extractMsiAssets(release) {
   const assets = Array.isArray(release.assets) ? release.assets : [];
-  return assets.filter((asset) => typeof asset.name === 'string' && asset.name.toLowerCase().endsWith('.msi'));
+  const isMsiAsset = (asset) => typeof asset.name === 'string' && asset.name.toLowerCase().endsWith('.msi');
+  return assets.filter(isMsiAsset);
 }
 
 function buildHtml({ owner, repo, releases, latestWithMsi }) {
+  const latestAsset = latestWithMsi?.msiAssets?.[0] || null;
   const latestSection = latestWithMsi
     ? `
       <section class="hero">
         <h2>Download latest installer</h2>
         <p class="meta">${escapeHtml(latestWithMsi.name || latestWithMsi.tag_name || 'Latest release')} • ${escapeHtml(formatDate(latestWithMsi.published_at))}</p>
-        <a class="button" href="${escapeHtml(latestWithMsi.msiAssets[0].browser_download_url)}">Download ${escapeHtml(latestWithMsi.msiAssets[0].name)}</a>
+        <a class="button" href="${escapeHtml(latestAsset.browser_download_url)}">Download ${escapeHtml(latestAsset.name)}</a>
       </section>
     `
     : `
@@ -128,7 +138,7 @@ function buildHtml({ owner, repo, releases, latestWithMsi }) {
       .meta { color: #59636e; font-size: 0.95rem; }
       .button { display: inline-block; background: #2da44e; color: #fff; text-decoration: none; padding: 10px 14px; border-radius: 8px; font-weight: 600; }
       .button.secondary { background: #0969da; margin-right: 8px; margin-top: 8px; }
-      .missing { color: #8250df; }
+      .missing { color: #5a1f9a; }
       .downloads { margin-top: 10px; }
       footer { color: #59636e; font-size: 0.9rem; margin-top: 24px; }
     </style>
@@ -154,28 +164,30 @@ async function main() {
   const [ownerArg, repoArg] = process.argv.slice(2);
   const owner = ownerArg || process.env.GITHUB_OWNER || DEFAULT_OWNER;
   const repo = repoArg || process.env.GITHUB_REPO || DEFAULT_REPO;
+  validateRepoIdentifier(owner, 'owner');
+  validateRepoIdentifier(repo, 'repo');
 
   const releases = await loadReleases(owner, repo);
   const stableReleases = releases
     .filter((release) => !release.draft && !release.prerelease)
     .map((release) => ({ ...release, msiAssets: extractMsiAssets(release) }));
 
-  stableReleases.sort((a, b) => {
-    const dateA = Date.parse(a.published_at || 0);
-    const dateB = Date.parse(b.published_at || 0);
+  const sortedStableReleases = stableReleases.sort((a, b) => {
+    const dateA = Date.parse(a.published_at || '') || 0;
+    const dateB = Date.parse(b.published_at || '') || 0;
     return dateB - dateA;
   });
 
-  const latestWithMsi = stableReleases.find((release) => release.msiAssets.length > 0) || null;
-  const html = buildHtml({ owner, repo, releases: stableReleases, latestWithMsi });
+  const latestWithMsi = sortedStableReleases.find((release) => release.msiAssets.length > 0) || null;
+  const html = buildHtml({ owner, repo, releases: sortedStableReleases, latestWithMsi });
 
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   await fs.writeFile(OUTPUT_FILE, html, 'utf8');
 
-  console.log(`Generated ${OUTPUT_FILE} from ${stableReleases.length} stable release(s).`);
+  console.log(`Generated ${OUTPUT_FILE} from ${sortedStableReleases.length} stable release(s).`);
 }
 
 main().catch((error) => {
-  console.error(error.message || error);
+  console.error(error?.stack || error?.message || String(error));
   process.exit(1);
 });
